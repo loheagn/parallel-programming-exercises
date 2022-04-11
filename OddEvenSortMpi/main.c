@@ -79,6 +79,7 @@ void merge_arrays(int *a, int *b, int n) {
     }
     memcpy(a, tmp, sizeof(int) * n);
     memcpy(b, tmp + n, sizeof(int) * n);
+    free(tmp);
 }
 
 int main() {
@@ -160,7 +161,14 @@ int main() {
         printf("The global list is:\n");
         print_array(a, local_n * comm_sz);
         printf("\n");
+
+        free(a);
     }
+
+    free(tmp_buf);
+    free(local_A);
+
+    MPI_Finalize();
 
     return 0;
 }
