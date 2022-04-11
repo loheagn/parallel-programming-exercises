@@ -86,14 +86,16 @@ int main() {
     int comm_sz;
     int my_rank;
     int local_n;
+    int n;
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
     if (my_rank == 0) {
         printf("Input the value of local_n:\n");
-        scanf("%d", &local_n);
+        scanf("%d", &n);
     }
+    local_n = n / comm_sz;
     MPI_Bcast(&local_n, 1, MPI_INT, ROOT_PROCESS, MPI_COMM_WORLD);
 
     int *local_A = malloc(sizeof(int) * local_n);
