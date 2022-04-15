@@ -16,3 +16,5 @@ a.out.dSYM
 cmake-build-debug
 
 .idea
+
+*.zip
