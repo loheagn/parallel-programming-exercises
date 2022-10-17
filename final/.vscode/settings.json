@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.xmi": "xml",
+        "png.h": "c"
+    }
+}
